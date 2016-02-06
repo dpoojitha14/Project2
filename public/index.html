@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html ng-app="myapp">
+<head>
+
+    <title>Appointment Details</title>
+</head>
+
+<body>
+
+     <div class="container" ng-controller="AppCtrl as ac">
+	  <h1>Appointment Details</h1>
+	  
+	  <table class="table">
+	     <thead>
+		     <tr>
+			    <th>Date</th>
+				<th>Time</th>
+				<th>Description</th>
+				<th>Action</th>
+			 </tr>
+		 </thead>
+		 <tbody>
+		    <tr>
+				<td><input ng-model="ac.appointment.date"></td>
+				<td><input ng-model="ac.appointment.time"></td>
+				<td><input ng-model="ac.appointment.description"></td>
+				<td><button ng-click="ac.addAppointment()">Add Appointment</button></td>
+				<td><button ng-click="ac.update()">Update</button>&nbsp;&nbsp;<button ng-click="ac.deselect()">Clear</td>
+			</tr>
+		    <tr ng-repeat="appointment in ac.appointments">
+			   <td>{{appointment.date}}</td>
+			   <td>{{appointment.time}}</td>
+			   <td>{{appointment.description}}</td>
+			   <td><button ng-click="ac.remove(appointment._id)">Remove</button></td>
+			   <td><button ng-click="ac.edit(appointment._id)">Edit</button></td>
+			</tr>
+		 </tbody>
+	  </table>
+	  </div>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="controllers/controller.js"></script>
+</body>
+</html>
